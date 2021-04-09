@@ -1,0 +1,14 @@
+# Usecase,
+# Battery Charge Monitor doesn't work and crash in MATE Panel.
+# Install 'cbatticon'
+# https://stackoverflow.com/questions/3683910/executing-shell-command-in-background-from-script
+# save this script as checkbattery 'without .sh' in '/bin/' make it executable chmod +x checkbattery and type checkbattery
+
+#!/bin/bash
+
+echo 'Enabling Battery Status.....'
+sleep 3
+cmd="cbatticon -u 5 -i notification -l 20 -r 10 -c 'systemctl hibernate'";
+eval "${cmd}" &>/dev/null & disown;
+sleep 5
+echo 'Done.'
